@@ -1,0 +1,3 @@
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/test_smoke_collection/points/query "HTTP/1.1 200 OK"

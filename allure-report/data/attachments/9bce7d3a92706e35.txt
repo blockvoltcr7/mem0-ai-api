@@ -1,0 +1,27 @@
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://localhost:6333/collections "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://localhost:6333/collections "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/test_smoke_collection/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:355 Total existing memories: 1
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:386 {'id': '0', 'text': 'Loves programming in Python', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:419 NOOP for Memory.
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:355 Total existing memories: 0
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:355 Total existing memories: 0
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/test_smoke_collection/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/test_smoke_collection/points/query "HTTP/1.1 200 OK"

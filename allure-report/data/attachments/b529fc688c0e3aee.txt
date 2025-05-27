@@ -1,0 +1,2 @@
+✅ Added a memory successfully
+🔍 Search results: ['First memory entry for testing']

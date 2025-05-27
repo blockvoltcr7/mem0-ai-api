@@ -1,0 +1,3 @@
+Search should handle non-existent content gracefully: Search should always return a list
+assert False
+ +  where False = isinstance({'results': []}, list)

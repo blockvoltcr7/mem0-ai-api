@@ -1,0 +1,39 @@
+annotated-types
+anyio
+certifi
+charset-normalizer
+distro
+elevenlabs
+h11
+httpcore
+httpx
+idna
+jiter
+openai
+pillow
+pydantic
+pydantic-core
+pydantic-settings==2.1.0
+python-dotenv
+pytest-asyncio
+requests
+sniffio
+tqdm
+typing-extensions
+typing-inspection
+urllib3
+websockets
+allure-pytest
+
+# Memory and Vector Database
+mem0ai
+qdrant-client
+
+# Supabase dependencies
+supabase
+psycopg2-binary
+vecs
+
+# FastAPI
+fastapi
+uvicorn[standard] 
