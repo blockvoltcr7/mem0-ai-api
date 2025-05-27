@@ -1,0 +1,25 @@
+credentials:
+  usernames:
+    demo_user:
+      email: demo@healthcoach.ai
+      name: Demo User
+      password: demo123
+    test_user:
+      email: test@healthcoach.ai
+      name: Test User
+      password: test123
+    admin_user:
+      email: admin@healthcoach.ai
+      name: Admin User
+      password: admin123
+
+cookie:
+  expiry_days: 30
+  key: health_coach_auth_key_12345
+  name: health_coach_auth_cookie
+
+preauthorized:
+  emails:
+    - demo@healthcoach.ai
+    - test@healthcoach.ai
+    - admin@healthcoach.ai 
