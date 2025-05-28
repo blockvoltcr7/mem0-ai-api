@@ -1,300 +1,261 @@
-# FastAPI Allure Pytest Template
+# 🧠 Mem01 AI Applications - OpenAI + Mem0 + Qdrant
 
-This repository provides a quick start template for building APIs with FastAPI, testing with Pytest, and generating beautiful test reports using Allure. The goal is to enable developers to quickly create and deploy APIs to platforms like Render or Railway.
+A collection of advanced AI applications demonstrating **persistent memory capabilities** using **OpenAI GPT models**, **Mem0** memory framework, and **Qdrant** vector database. These applications showcase how to build intelligent, memory-powered AI systems that remember user interactions across sessions.
 
-## 🧠 AI Agent Mem0 API
+## 🚀 Featured Applications
 
-This template now includes a complete **AI Agent API with persistent memory** using **Mem0** and **Qdrant** vector database. The API provides conversational AI capabilities with memory that persists across sessions.
+### 🧬 Health Coach AI - Peptide Therapy Assistant
+**Location**: `gradio-peptides-app/`
 
-### Key Features
-- 🧠 **Persistent Memory**: Conversations stored and retrieved across sessions
-- 👤 **User Isolation**: Each user has their own memory space  
-- 🔍 **Context-Aware**: AI responses based on conversation history
-- 📊 **Health Monitoring**: Comprehensive system health checks
-- 🚀 **High Performance**: Optimized for production use
-- 📖 **Interactive Documentation**: Full Swagger UI for testing
+A specialized AI health coach focused on peptide therapy education and guidance, featuring:
+- **Memory-Powered Conversations**: Remembers health profiles and chat history using Mem0 + Qdrant
+- **Optional Health Profiles**: Start chatting immediately or complete profile for personalized advice
+- **Persistent Storage**: Health data saved across sessions - no need to refill forms
+- **3 Demo Users**: John (beginner), Jane (experienced), Jarvis (gut health focus)
+- **Safety-First**: Emphasizes medical supervision and evidence-based information
 
-### Quick Start
-```bash
-# Start the API server
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+**Tech Stack**: Gradio + OpenAI GPT-4o-mini + Mem0 + Qdrant + Pydantic V2
 
-# Open Swagger UI for testing
-python scripts/open_swagger_ui.py
-```
+[📖 View Full Documentation](gradio-peptides-app/README.md)
 
-### API Documentation
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
-- **OpenAPI JSON**: http://localhost:8000/openapi.json
+### 🏥 AI Prompt Engineering Tutor for Healthcare  
+**Location**: `gradio-ai-tutor/`
 
-### Example Usage
-```bash
-# Test the chat endpoint
-curl -X POST "http://localhost:8000/api/v1/chat" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "user_id": "user123",
-    "message": "Tell me about BPC-157 peptide",
-    "metadata": {"domain": "peptide_coaching"}
-  }'
-```
+An educational AI tutor that teaches healthcare professionals effective prompt engineering for medical AI applications:
+- **Progressive Learning**: Builds on previous conversations and learning progress
+- **Healthcare Domain Focus**: Specialized in health AI prompt engineering best practices
+- **User Isolation**: Complete separation of learning sessions between users
+- **Simple Interface**: Clean, reliable Gradio UI for easy learning
 
-For detailed testing instructions, see [`docs/swagger-ui-guide.md`](docs/swagger-ui-guide.md).
+**Tech Stack**: Gradio + OpenAI GPT-4o-mini + Mem0 + Qdrant + Pydantic
 
-## Table of Contents
+[📖 View Full Documentation](gradio-ai-tutor/README.md)
 
-- [AI Agent Mem0 API](#-ai-agent-mem0-api)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Running the Application](#running-the-application)
-- [API Testing with Swagger UI](#api-testing-with-swagger-ui)
-- [Running Tests](#running-tests)
-- [Deployment](#deployment)
-  - [Render](#render)
-  - [Railway](#railway)
-- [Contributing](#contributing)
-- [License](#license)
+## 🛠️ Core Technologies
 
-## Project Structure
+### 🧠 Memory Architecture
+- **Mem0**: Advanced memory management framework for AI applications
+- **Qdrant**: High-performance vector database for semantic search and memory storage
+- **OpenAI GPT-4o-mini**: Fast, intelligent language model for conversations
+- **Persistent Memory**: User interactions and profiles saved across sessions
 
-The project is organized as follows:
+### 🔧 Development Stack
+- **Frontend**: Gradio for rapid web UI development
+- **Data Validation**: Pydantic V2 for robust data modeling
+- **Package Management**: UV for fast Python dependency management
+- **Testing**: Pytest with Allure reporting
 
-```
-.
-├── app/                  # Main application code (FastAPI)
-│   ├── api/             # API endpoints and routers
-│   ├── core/            # Core configuration and managers
-│   ├── db/              # Database clients and connections
-│   ├── models/          # Pydantic models
-│   └── services/        # Business logic services
-├── tests/                # Pytest tests with Allure reporting
-├── scripts/              # Utility scripts for testing and deployment
-├── docs/                 # Project documentation including API guides
-├── .github/              # GitHub Actions workflows (if any)
-├── .venv/                # Virtual environment
-├── allure-results/       # Allure test results
-├── output/               # General output directory
-├── .dockerignore         # Specifies intentionally untracked files that Docker should ignore
-├── .gitignore            # Specifies intentionally untracked files that Git should ignore
-├── cloudbuild.yaml       # Google Cloud Build configuration
-├── docker-compose.yml    # Docker Compose configuration
-├── Dockerfile            # Dockerfile for building the application image
-├── Dockerfile.railway    # Dockerfile specific to Railway deployment
-├── Dockerfile.original   # Original Dockerfile (backup or alternative)
-├── deploy-railway.sh     # Script for deploying to Railway
-├── deploy.sh             # General deployment script
-├── get-pip.py            # Script to install pip
-├── pytest.ini            # Pytest configuration
-├── railway-simple.json   # Simplified Railway configuration
-├── railway.json          # Railway configuration
-├── README_RAILWAY_DEPLOYMENT.md # Detailed Railway deployment instructions
-├── README_RAILWAY_DEPLOYMENT_DETAILS.md # Additional Railway deployment details
-├── RAILWAY_CLI_COMMANDS.md # Railway CLI commands
-├── README_RENDER_DEPLOYMENT.md # Detailed Render deployment instructions
-├── render.yaml           # Render configuration
-├── requirements.in       # Main dependencies file for uv
-├── requirements.lock     # Lock file for dependencies
-├── requirements.txt      # Pinned dependencies generated from requirements.in
-```
-
-## Getting Started
+## 📦 Quick Start
 
 ### Prerequisites
+- Python 3.8+ 
+- OpenAI API key
+- Qdrant vector database (local or cloud)
 
-- Python 3.8+
-- [uv](https://github.com/astral-sh/uv) (Python package installer and virtual environment manager)
-- Docker (optional, for containerized development and deployment)
-- **For AI Agent API**: OpenAI API key and Qdrant vector database access
-
-### Installation
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/pytest-fast-api-template.git
-    cd pytest-fast-api-template
-    ```
-
-2.  **Create and activate a virtual environment using uv:**
-    ```bash
-    uv venv
-    source .venv/bin/activate  # On Unix/macOS
-    # .venv\Scripts\activate    # On Windows
-    ```
-
-3.  **Install dependencies using uv:**
-    ```bash
-    uv pip install -r requirements.txt
-    ```
-    *Note: `requirements.txt` is generated from `requirements.in`. If you add new dependencies, add them to `requirements.in` and then run `uv pip compile requirements.in` to update `requirements.txt`.*
-
-4.  **Configure environment variables:**
-    ```bash
-    # Copy the example environment file
-    cp env.example .env
-    
-    # Edit .env with your configuration
-    # - OPENAI_API_KEY: Your OpenAI API key
-    # - QDRANT_URL: Your Qdrant database URL
-    # - Other configuration as needed
-    ```
-
-## Running the Application
-
-To run the FastAPI application locally:
-
+### 1. Environment Setup
 ```bash
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+# Clone the repository
+git clone <repository-url>
+cd mem01-ai-tutor
+
+# Create virtual environment
+uv venv
+source .venv/bin/activate  # On Unix/macOS
+# .venv\Scripts\activate     # On Windows
+
+# Install dependencies  
+uv pip install -r requirements.txt
 ```
 
-The application will be available at `http://127.0.0.1:8000`.
+### 2. Environment Configuration
+Create a `.env` file in the project root:
+```env
+# Required
+OPENAI_API_KEY=your_openai_api_key_here
 
-### Health Check
+# Optional (defaults provided)
+QDRANT_URL=http://localhost:6333
+QDRANT_USE_HTTPS=false
+```
+
+### 3. Database Setup
+**Option A: Local Qdrant (Development)**
 ```bash
-# Basic health check
-curl http://localhost:8000/health
+# Using Docker (recommended)
+docker run -p 6333:6333 qdrant/qdrant
 
-# Detailed system status
-curl http://localhost:8000/api/v1/health/detailed
+# Using pip
+pip install qdrant-client
 ```
 
-## API Testing with Swagger UI
+**Option B: Qdrant Cloud (Production)**
+1. Sign up for [Qdrant Cloud](https://cloud.qdrant.io/)
+2. Create a cluster and get your URL
+3. Update `.env` with your cloud URL and set `QDRANT_USE_HTTPS=true`
 
-The API includes comprehensive Swagger UI documentation for interactive testing:
+### 4. Launch Applications
 
-### Access Swagger UI
+**Health Coach AI (Peptide Therapy)**:
 ```bash
-# Automatic launcher (recommended)
-python scripts/open_swagger_ui.py
-
-# Or visit manually
-open http://localhost:8000/docs
+cd gradio-peptides-app
+./run.sh
+# Access: http://localhost:7861
 ```
 
-### Testing Workflow
-1. **Health Check**: Start with `/health` endpoints to verify system status
-2. **Chat Testing**: Use `/api/v1/chat` with different user scenarios
-3. **Memory Verification**: Test memory persistence across conversations
-
-### Example Test Cases
-```json
-// New user conversation
-{
-  "user_id": "test_user_001",
-  "message": "I'm interested in BPC-157 peptide",
-  "metadata": {"domain": "peptide_coaching"}
-}
-
-// Follow-up conversation (same user_id)
-{
-  "user_id": "test_user_001", 
-  "message": "What are the side effects?",
-  "metadata": {"domain": "peptide_coaching"}
-}
+**AI Prompt Engineering Tutor**:
+```bash  
+cd gradio-ai-tutor
+./run.sh
+# Access: http://localhost:7860
 ```
 
-For comprehensive testing instructions, see [`docs/swagger-ui-guide.md`](docs/swagger-ui-guide.md).
+## 🏗️ Project Structure
 
-## Running Tests
+```
+mem01-ai-tutor/
+├── 📁 gradio-peptides-app/          # Health Coach AI for peptide therapy
+│   ├── app.py                       # Main Gradio application (31KB)
+│   ├── README.md                    # Detailed documentation
+│   ├── run.sh                       # Launch script
+│   └── test_gradio_peptides.py      # Application tests
+├── 📁 gradio-ai-tutor/              # AI Prompt Engineering Tutor
+│   ├── app.py                       # Main Gradio application (15KB)
+│   ├── README.md                    # Detailed documentation
+│   └── run.sh                       # Launch script
+├── 📁 tests/                        # Comprehensive test suite
+├── 📁 docs/                         # Project documentation
+├── 📁 scripts/                      # Utility scripts
+├── 🔧 requirements.txt              # Python dependencies
+├── 🔧 requirements.in               # Dependency definitions
+├── 🔧 .env.example                  # Environment template
+└── 📚 README.md                     # This file
+```
 
-This project uses Pytest for testing and Allure for reporting.
+## 🎯 Key Features Demonstrated
 
-You can run tests directly with pytest, or use the provided shell scripts for more control over test execution and environment selection.
+### Memory Management
+- **Persistent Conversations**: Chat history saved across sessions
+- **User Isolation**: Complete data separation between users
+- **Context-Aware Responses**: AI remembers previous interactions
+- **Profile Storage**: User data persisted in vector database
 
-### AI Agent API Tests
+### Advanced AI Capabilities
+- **Domain Specialization**: Applications focused on specific use cases
+- **Safety-First Design**: Responsible AI with appropriate disclaimers
+- **Adaptive Responses**: Different advice based on user profiles/progress
+- **Evidence-Based**: Grounded in factual information
+
+### Production-Ready Architecture
+- **Scalable Database**: Qdrant vector storage for large-scale deployment
+- **Modern UI**: Gradio for rapid, responsive web interfaces
+- **Robust Validation**: Pydantic models for data integrity
+- **Comprehensive Testing**: Full test coverage with detailed reporting
+
+## 🧪 Testing & Development
+
+### Running Tests
 ```bash
-# Run AI Agent specific tests
-pytest tests/test_ai_agent_api.py --alluredir=allure-results -v
+# Run all tests with Allure reporting
+pytest --alluredir=allure-results -v
 
-# Run manual test script
-python scripts/test_ai_agent_api.py
+# Generate and serve test report
+allure serve allure-results
 ```
 
-### Using Test Runner Scripts
-
-Shell scripts are available in `tests/utils/test_runners/` to help you:
-- Run all tests
-- Run tests by group/feature
-- Run tests by file
-- Specify the environment to test against (dev, uat, prod)
-
-**Examples:**
-
-Run all tests in the default (dev) environment:
+### Application-Specific Tests
 ```bash
-./tests/utils/test_runners/run_all_tests.sh
+# Test Health Coach AI
+pytest gradio-peptides-app/test_gradio_peptides.py -v
+
+# Test AI Tutor (manual)
+python gradio-ai-tutor/app.py
 ```
 
-Run all tests in a specific environment:
+### Memory Isolation Testing
+Each application includes comprehensive tests to verify:
+- User data separation
+- Memory persistence across sessions
+- Proper conversation history management
+- Profile storage and retrieval
+
+## 🚀 Deployment Options
+
+### Local Development
+Both applications include run scripts for immediate local deployment:
 ```bash
-./tests/utils/test_runners/run_all_tests.sh -e dev
+./run.sh  # In each application directory
 ```
 
-Run tests by group:
-```bash
-./tests/utils/test_runners/run_by_group.sh -g "API Tests"
-```
+### Cloud Deployment
+The repository includes configurations for:
+- **Railway**: `railway.json`, `Dockerfile.railway`
+- **Render**: `render.yaml`, deployment scripts
+- **Docker**: Multi-stage Dockerfiles for production
 
-Run a specific test file:
-```bash
-./tests/utils/test_runners/run_by_file.sh -f tests/api/v1/test_hello.py
-```
+## 🔍 Use Cases & Applications
 
-You can also pass additional pytest options to these scripts as needed.
+### Healthcare AI Development
+- **Prompt Engineering Training**: Learn effective healthcare AI prompting
+- **Patient Education**: Specialized health coaching applications
+- **Medical AI Safety**: Best practices for responsible health AI
 
-For more details on test organization, environment configuration, and advanced usage, see [`tests/README.md`](tests/README.md).
+### Memory-Powered AI Systems
+- **Persistent Conversations**: Building AI that remembers users
+- **Profile Management**: Storing and retrieving user preferences
+- **Context-Aware Responses**: Intelligent, personalized interactions
 
-1.  **Run Pytest tests and generate Allure results (direct):**
-    ```bash
-    pytest --alluredir=allure-results -v -s
-    ```
+### Gradio Application Development
+- **Rapid Prototyping**: Fast UI development for AI applications
+- **User Authentication**: Simple user identification systems
+- **Data Validation**: Robust input handling with Pydantic
 
-2.  **Serve the Allure report:**
-    ```bash
-    allure serve allure-results
-    ```
-    This will open the report in your web browser.
+## ⚠️ Important Notes
 
-## Deployment
+### Medical Disclaimer
+The Health Coach AI application is **for educational purposes only**. Peptides like BPC-157 are not FDA-approved for human use. Always consult qualified healthcare professionals before starting any therapy.
 
-This template is designed for easy deployment to cloud platforms.
+### API Usage
+These applications use OpenAI's API which incurs costs. Monitor your usage and set appropriate limits.
 
-### Render
+### Data Privacy
+- User conversations are stored in your Qdrant database
+- No data is shared between users
+- Consider data retention policies for production use
 
-Refer to the `README_RENDER_DEPLOYMENT.md` file and `render.yaml` for detailed instructions on deploying to Render.
+## 🤝 Contributing
 
-Key files:
-- `render.yaml`
-- `README_RENDER_DEPLOYMENT.md`
-- `Dockerfile` (or rely on Render's native Python support)
+Contributions are welcome! Areas of interest:
+- Additional AI application examples
+- Enhanced memory management patterns
+- New deployment configurations
+- Improved testing coverage
+- Documentation improvements
 
-### Railway
+### Development Process
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes with tests
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
 
-Refer to the `README_RAILWAY_DEPLOYMENT.md`, `README_RAILWAY_DEPLOYMENT_DETAILS.md`, and `RAILWAY_CLI_COMMANDS.md` files for comprehensive guidance on deploying to Railway.
+## 📚 Additional Resources
 
-Key files:
-- `railway.json` / `railway-simple.json`
-- `Dockerfile.railway`
-- `deploy-railway.sh`
-- `README_RAILWAY_DEPLOYMENT.md`
-- `README_RAILWAY_DEPLOYMENT_DETAILS.md`
-- `RAILWAY_CLI_COMMANDS.md`
+### Documentation
+- [Health Coach AI Documentation](gradio-peptides-app/README.md)
+- [AI Tutor Documentation](gradio-ai-tutor/README.md)
+- [Qdrant API Reference](README_QDRANT_API.md)
+- [Railway Deployment Guide](README_RAILWAY_DEPLOYMENT.md)
 
-## Contributing
+### Related Projects
+- [Mem0 Framework](https://github.com/mem0ai/mem0)
+- [Qdrant Vector Database](https://github.com/qdrant/qdrant)
+- [Gradio ML Interfaces](https://github.com/gradio-app/gradio)
 
-Contributions are welcome! Please follow these steps:
+## 📄 License
 
-1.  Fork the repository.
-2.  Create a new branch (`git checkout -b feature/your-feature-name`).
-3.  Make your changes.
-4.  Commit your changes (`git commit -m 'Add some feature'`).
-5.  Push to the branch (`git push origin feature/your-feature-name`).
-6.  Open a Pull Request.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Please ensure your code adheres to the project's coding standards and that all tests pass.
+---
 
-## License
-
-This project is licensed under the MIT License - see the `LICENSE` file for details (if one exists, otherwise specify your chosen license). 
+**🚀 Ready to build memory-powered AI applications?** Start with either the Health Coach AI or AI Tutor, and explore how Mem0 + Qdrant create intelligent, persistent AI experiences! 
