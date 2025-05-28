@@ -1,1 +1,0 @@
-{'vector_store': {'provider': 'qdrant', 'config': {'collection_name': 'test_smoke_collection', 'host': 'localhost', 'port': 6333}}}

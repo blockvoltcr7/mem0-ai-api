@@ -1,9 +1,0 @@
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://localhost:6333/collections "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT http://localhost:6333/collections/test_smoke_collection "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://localhost:6333 "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://localhost:6333/collections "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT http://localhost:6333/collections/mem0migrations "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST http://localhost:6333/collections/mem0migrations/points "HTTP/1.1 200 OK"
-[32mINFO    [0m mem0.vector_stores.qdrant:qdrant.py:103 Inserting 1 vectors into collection mem0migrations
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT http://localhost:6333/collections/mem0migrations/points?wait=true "HTTP/1.1 200 OK"

@@ -1,3 +1,0 @@
-Failed to search for programming memories: Search results should be a list
-assert False
- +  where False = isinstance({'results': [{'created_at': '2025-05-25T15:24:18.011809-07:00', 'hash': '83ee3590d180fcafa74646839fa856e1', 'id': 'f5e01972-bd95-4724-8e89-f7bc0436f9b7', 'memory': 'Loves programming in Python', ...}]}, list)

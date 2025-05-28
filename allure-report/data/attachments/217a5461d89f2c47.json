@@ -1,1 +1,0 @@
-{'results': [{'id': '69bb41f8-8a8b-441f-8502-c5e2ce729642', 'memory': 'First memory entry for testing', 'hash': '99f952b2cc23dd84527b49b016c6303d', 'metadata': {'test': 'yes', 'category': 'smoke_test'}, 'score': 0.6357522, 'created_at': '2025-05-25T15:24:14.930900-07:00', 'updated_at': None, 'user_id': 'test_user_123'}]}

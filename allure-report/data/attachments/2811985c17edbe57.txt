@@ -1,2 +1,0 @@
-Failed to search for AI memories: Should find memories related to AI
-assert False

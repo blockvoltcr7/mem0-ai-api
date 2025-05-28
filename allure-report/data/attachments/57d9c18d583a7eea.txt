@@ -1,1 +1,0 @@
-Memory 3: Vector databases are powerful for similarity search

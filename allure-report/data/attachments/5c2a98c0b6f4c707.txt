@@ -1,1 +1,0 @@
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"

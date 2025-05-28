@@ -1,1 +1,0 @@
-Memory 1: I love programming in Python

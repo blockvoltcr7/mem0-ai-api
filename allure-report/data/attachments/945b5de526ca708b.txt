@@ -1,1 +1,0 @@
-Search should handle non-existent content gracefully: Memory.search() got an unexpected keyword argument 'k'
