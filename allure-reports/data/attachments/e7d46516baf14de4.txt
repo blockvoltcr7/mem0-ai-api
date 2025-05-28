@@ -1,2 +1,0 @@
-Total collections: 2
-Collection names: ['mem0_test', 'mem0_test_pytest']

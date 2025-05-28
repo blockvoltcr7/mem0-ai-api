@@ -1,3 +1,0 @@
-Query: food
-Results found: 2
-Results: [{'id': 'f4175a51-77f7-47b8-9840-9e5316722f28', 'memory': 'Prefers sheep or goat cheese', 'hash': '7893060c53d640060bd8a1f0f31e326b', 'metadata': None, 'score': 0.25317156976681054, 'created_at': '2025-05-27T06:22:59.603750-07:00', 'updated_at': '2025-05-27T06:23:06.553195-07:00', 'user_id': 'e2e_test_user_001'}, {'id': 'd6bc081d-8788-4c80-8f03-5d5f2cc5d3be', 'memory': 'Likes all kinds of cheese except cow milk cheese', 'hash': 'a82f63b65d385c001ac9686cf64e97c3', 'metadata': None, 'score': 0.2178631482811559, 'created_at': '2025-05-27T06:22:59.599489-07:00', 'updated_at': None, 'user_id': 'e2e_test_user_001'}]

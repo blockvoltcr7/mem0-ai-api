@@ -1,2 +1,0 @@
-QDRANT_URL: qdrant-production-3e2f.up.railway.app
-QDRANT_USE_HTTPS: true

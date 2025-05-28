@@ -1,3 +1,0 @@
-Failed to initialize peptide coach: Unexpected Response: 400 (Bad Request)
-Raw response content:
-b'Client sent an HTTP request to an HTTPS server.\n'

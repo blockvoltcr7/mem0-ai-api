@@ -1,1 +1,0 @@
-{'credentials': {'usernames': {'test_user': {'email': 'test@healthcoach.ai', 'name': 'Test User', 'password': '$2b$12$CwOlGUs/p54lzT02kmlTieI4YzFUI5muABaOThcJp43aoeB2dzrKO'}}}, 'cookie': {'expiry_days': 30, 'key': 'test_auth_key', 'name': 'test_auth_cookie'}}

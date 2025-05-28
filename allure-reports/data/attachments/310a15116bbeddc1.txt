@@ -1,2 +1,0 @@
-Points count: 1
-Vectors count: None

@@ -1,1 +1,0 @@
-{'llm': {'provider': 'openai', 'config': {'model': 'gpt-4o-mini', 'temperature': 0.7, 'max_tokens': 1000}}, 'vector_store': {'provider': 'qdrant', 'config': {'collection_name': 'mem0_peptide_coaching', 'url': 'https://qdrant-production-3e2f.up.railway.app', 'port': None}}}

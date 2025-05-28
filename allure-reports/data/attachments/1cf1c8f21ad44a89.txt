@@ -1,5 +1,0 @@
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET https://qdrant-production-3e2f.up.railway.app/collections "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_test_pytest "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_test_pytest/points?wait=true "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_test_pytest/points/search "HTTP/1.1 200 OK"
-[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET https://qdrant-production-3e2f.up.railway.app/collections/mem0_test_pytest "HTTP/1.1 200 OK"

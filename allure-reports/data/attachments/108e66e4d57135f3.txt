@@ -1,2 +1,0 @@
-User 1 Query: what are my food preferences?
-AI: You like all kinds of cheese except cow milk cheese, and you prefer sheep or goat cheese.

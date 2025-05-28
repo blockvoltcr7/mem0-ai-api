@@ -1,2 +1,0 @@
-User 2 Query: what are my food preferences?
-AI: You love spicy food and hate sweet desserts.
