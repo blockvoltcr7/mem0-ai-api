@@ -11,5 +11,5 @@ allure-results/
 
 # Claude configuration files
 .claude/settings.local.json
-allure-results/
+allure-reports/
 allure-report/
