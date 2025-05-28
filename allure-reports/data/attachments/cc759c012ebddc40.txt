@@ -1,0 +1,55 @@
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:359 Total existing memories: 0
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:390 {'id': '0', 'text': 'Using BPC-157 for tissue repair at 250mcg daily', 'event': 'ADD'}
+[32mINFO    [0m mem0.vector_stores.qdrant:qdrant.py:103 Inserting 1 vectors into collection mem0_peptide_coaching
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points?wait=true "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:359 Total existing memories: 1
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:390 {'id': '0', 'text': 'Using BPC-157 for tissue repair at 250mcg daily', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:430 NOOP for Memory.
+[32mINFO    [0m root:main.py:390 {'id': '1', 'text': 'Takes collagen peptides for skin health', 'event': 'ADD'}
+[32mINFO    [0m mem0.vector_stores.qdrant:qdrant.py:103 Inserting 1 vectors into collection mem0_peptide_coaching
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points?wait=true "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:359 Total existing memories: 2
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:390 {'id': '0', 'text': 'Using BPC-157 for tissue repair at 250mcg daily', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:430 NOOP for Memory.
+[32mINFO    [0m root:main.py:390 {'id': '1', 'text': 'Takes collagen peptides for skin health', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:430 NOOP for Memory.
+[32mINFO    [0m root:main.py:390 {'id': '2', 'text': 'Doctor recommended starting with a lower dose', 'event': 'ADD'}
+[32mINFO    [0m mem0.vector_stores.qdrant:qdrant.py:103 Inserting 1 vectors into collection mem0_peptide_coaching
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points?wait=true "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:359 Total existing memories: 3
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:390 {'id': '0', 'text': 'Using BPC-157 for tissue repair at 250mcg daily', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:430 NOOP for Memory.
+[32mINFO    [0m root:main.py:390 {'id': '1', 'text': 'Doctor recommended starting with a lower dose', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:430 NOOP for Memory.
+[32mINFO    [0m root:main.py:390 {'id': '2', 'text': 'Takes collagen peptides for skin health', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:430 NOOP for Memory.
+[32mINFO    [0m root:main.py:390 {'id': '3', 'text': 'Tracking progress for 2 weeks', 'event': 'ADD'}
+[32mINFO    [0m mem0.vector_stores.qdrant:qdrant.py:103 Inserting 1 vectors into collection mem0_peptide_coaching
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points?wait=true "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points/query "HTTP/1.1 200 OK"

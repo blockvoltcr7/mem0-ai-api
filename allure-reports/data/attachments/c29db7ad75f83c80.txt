@@ -1,0 +1,4 @@
+ScopeMismatch: You tried to access the function scoped fixture _function_event_loop with a session scoped request object. Requesting fixture stack:
+tests/qdrant_integration_tests/conftest.py:147:  def setup_test_environment()
+Requested fixture:
+.venv/lib/python3.12/site-packages/pytest_asyncio/plugin.py:843:  def _scoped_event_loop(*args, event_loop_policy) -> 'Iterator[asyncio.AbstractEventLoop]'

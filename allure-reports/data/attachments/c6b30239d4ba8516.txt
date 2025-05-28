@@ -1,0 +1,12 @@
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:355 Total existing memories: 2
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:386 {'id': '0', 'text': 'Likes all kinds of cheese except cow milk cheese', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:419 NOOP for Memory.
+[32mINFO    [0m root:main.py:386 {'id': '1', 'text': 'Prefers sheep or goat cheese', 'event': 'UPDATE', 'old_memory': 'Only likes sheep or goat cheese'}
+[32mINFO    [0m mem0.memory.main:main.py:856 Updating memory with data='Prefers sheep or goat cheese'
+[32mINFO    [0m mem0.memory.main:main.py:894 Updating memory with ID memory_id='f4175a51-77f7-47b8-9840-9e5316722f28' with data='Prefers sheep or goat cheese'

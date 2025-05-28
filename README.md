@@ -2,13 +2,55 @@
 
 This repository provides a quick start template for building APIs with FastAPI, testing with Pytest, and generating beautiful test reports using Allure. The goal is to enable developers to quickly create and deploy APIs to platforms like Render or Railway.
 
+## 🧠 AI Agent Mem0 API
+
+This template now includes a complete **AI Agent API with persistent memory** using **Mem0** and **Qdrant** vector database. The API provides conversational AI capabilities with memory that persists across sessions.
+
+### Key Features
+- 🧠 **Persistent Memory**: Conversations stored and retrieved across sessions
+- 👤 **User Isolation**: Each user has their own memory space  
+- 🔍 **Context-Aware**: AI responses based on conversation history
+- 📊 **Health Monitoring**: Comprehensive system health checks
+- 🚀 **High Performance**: Optimized for production use
+- 📖 **Interactive Documentation**: Full Swagger UI for testing
+
+### Quick Start
+```bash
+# Start the API server
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+# Open Swagger UI for testing
+python scripts/open_swagger_ui.py
+```
+
+### API Documentation
+- **Swagger UI**: http://localhost:8000/docs
+- **ReDoc**: http://localhost:8000/redoc
+- **OpenAPI JSON**: http://localhost:8000/openapi.json
+
+### Example Usage
+```bash
+# Test the chat endpoint
+curl -X POST "http://localhost:8000/api/v1/chat" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id": "user123",
+    "message": "Tell me about BPC-157 peptide",
+    "metadata": {"domain": "peptide_coaching"}
+  }'
+```
+
+For detailed testing instructions, see [`docs/swagger-ui-guide.md`](docs/swagger-ui-guide.md).
+
 ## Table of Contents
 
+- [AI Agent Mem0 API](#-ai-agent-mem0-api)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Running the Application](#running-the-application)
+- [API Testing with Swagger UI](#api-testing-with-swagger-ui)
 - [Running Tests](#running-tests)
 - [Deployment](#deployment)
   - [Render](#render)
@@ -23,12 +65,18 @@ The project is organized as follows:
 ```
 .
 ├── app/                  # Main application code (FastAPI)
-├── tests/                # Pytest tests
+│   ├── api/             # API endpoints and routers
+│   ├── core/            # Core configuration and managers
+│   ├── db/              # Database clients and connections
+│   ├── models/          # Pydantic models
+│   └── services/        # Business logic services
+├── tests/                # Pytest tests with Allure reporting
+├── scripts/              # Utility scripts for testing and deployment
+├── docs/                 # Project documentation including API guides
 ├── .github/              # GitHub Actions workflows (if any)
 ├── .venv/                # Virtual environment
 ├── allure-results/       # Allure test results
 ├── output/               # General output directory
-├── docs/                 # Project documentation
 ├── .dockerignore         # Specifies intentionally untracked files that Docker should ignore
 ├── .gitignore            # Specifies intentionally untracked files that Git should ignore
 ├── cloudbuild.yaml       # Google Cloud Build configuration
@@ -59,6 +107,7 @@ The project is organized as follows:
 - Python 3.8+
 - [uv](https://github.com/astral-sh/uv) (Python package installer and virtual environment manager)
 - Docker (optional, for containerized development and deployment)
+- **For AI Agent API**: OpenAI API key and Qdrant vector database access
 
 ### Installation
 
@@ -81,21 +130,87 @@ The project is organized as follows:
     ```
     *Note: `requirements.txt` is generated from `requirements.in`. If you add new dependencies, add them to `requirements.in` and then run `uv pip compile requirements.in` to update `requirements.txt`.*
 
+4.  **Configure environment variables:**
+    ```bash
+    # Copy the example environment file
+    cp env.example .env
+    
+    # Edit .env with your configuration
+    # - OPENAI_API_KEY: Your OpenAI API key
+    # - QDRANT_URL: Your Qdrant database URL
+    # - Other configuration as needed
+    ```
+
 ## Running the Application
 
 To run the FastAPI application locally:
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-The application will typically be available at `http://127.0.0.1:8000`.
+The application will be available at `http://127.0.0.1:8000`.
+
+### Health Check
+```bash
+# Basic health check
+curl http://localhost:8000/health
+
+# Detailed system status
+curl http://localhost:8000/api/v1/health/detailed
+```
+
+## API Testing with Swagger UI
+
+The API includes comprehensive Swagger UI documentation for interactive testing:
+
+### Access Swagger UI
+```bash
+# Automatic launcher (recommended)
+python scripts/open_swagger_ui.py
+
+# Or visit manually
+open http://localhost:8000/docs
+```
+
+### Testing Workflow
+1. **Health Check**: Start with `/health` endpoints to verify system status
+2. **Chat Testing**: Use `/api/v1/chat` with different user scenarios
+3. **Memory Verification**: Test memory persistence across conversations
+
+### Example Test Cases
+```json
+// New user conversation
+{
+  "user_id": "test_user_001",
+  "message": "I'm interested in BPC-157 peptide",
+  "metadata": {"domain": "peptide_coaching"}
+}
+
+// Follow-up conversation (same user_id)
+{
+  "user_id": "test_user_001", 
+  "message": "What are the side effects?",
+  "metadata": {"domain": "peptide_coaching"}
+}
+```
+
+For comprehensive testing instructions, see [`docs/swagger-ui-guide.md`](docs/swagger-ui-guide.md).
 
 ## Running Tests
 
 This project uses Pytest for testing and Allure for reporting.
 
 You can run tests directly with pytest, or use the provided shell scripts for more control over test execution and environment selection.
+
+### AI Agent API Tests
+```bash
+# Run AI Agent specific tests
+pytest tests/test_ai_agent_api.py --alluredir=allure-results -v
+
+# Run manual test script
+python scripts/test_ai_agent_api.py
+```
 
 ### Using Test Runner Scripts
 

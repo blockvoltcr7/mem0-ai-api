@@ -1,0 +1,13 @@
+4 validation errors for HealthCoachConfig
+qdrant_port
+  Extra inputs are not permitted [type=extra_forbidden, input_value='6333', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/extra_forbidden
+qdrant_collection_name
+  Extra inputs are not permitted [type=extra_forbidden, input_value='mem0_production', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/extra_forbidden
+environment
+  Extra inputs are not permitted [type=extra_forbidden, input_value='production', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/extra_forbidden
+log_level
+  Extra inputs are not permitted [type=extra_forbidden, input_value='INFO', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/extra_forbidden

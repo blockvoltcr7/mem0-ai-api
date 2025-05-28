@@ -1,0 +1,40 @@
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET https://qdrant-production-3e2f.up.railway.app "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET https://qdrant-production-3e2f.up.railway.app/collections "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET https://qdrant-production-3e2f.up.railway.app/collections "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:359 Total existing memories: 0
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:390 {'id': '0', 'text': 'Name is llm_test_user_03d037fd_1748367360', 'event': 'ADD'}
+[32mINFO    [0m mem0.vector_stores.qdrant:qdrant.py:103 Inserting 1 vectors into collection mem0_debug_llm_test
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points?wait=true "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:390 {'id': '1', 'text': 'Starting to use BPC-157 peptide for tissue repair', 'event': 'ADD'}
+[32mINFO    [0m mem0.vector_stores.qdrant:qdrant.py:103 Inserting 1 vectors into collection mem0_debug_llm_test
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points?wait=true "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:359 Total existing memories: 2
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:390 {'id': '0', 'text': 'Using BPC-157 peptide for tissue repair', 'event': 'UPDATE', 'old_memory': 'Starting to use BPC-157 peptide for tissue repair'}
+[32mINFO    [0m mem0.memory.main:main.py:848 Updating memory with data='Using BPC-157 peptide for tissue repair'
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: PUT https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points?wait=true "HTTP/1.1 200 OK"
+[32mINFO    [0m mem0.memory.main:main.py:886 Updating memory with ID memory_id='a3684743-cee2-41a6-8160-f0767c98d406' with data='Using BPC-157 peptide for tissue repair'
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m root:main.py:390 {'id': '1', 'text': 'Name is llm_test_user_03d037fd_1748367360', 'event': 'NONE'}
+[32mINFO    [0m root:main.py:430 NOOP for Memory.
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_debug_llm_test/points/query "HTTP/1.1 200 OK"

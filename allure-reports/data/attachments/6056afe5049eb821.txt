@@ -1,0 +1,2 @@
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://qdrant-production-3e2f.up.railway.app:443 "HTTP/1.0 400 Bad Request"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: GET http://qdrant-production-3e2f.up.railway.app:443/collections "HTTP/1.0 400 Bad Request"

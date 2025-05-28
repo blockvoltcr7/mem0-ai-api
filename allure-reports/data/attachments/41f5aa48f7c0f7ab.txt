@@ -1,0 +1,2 @@
+Total collections: 1
+Collection names: ['mem0_test']

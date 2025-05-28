@@ -1,0 +1,7 @@
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 400 Bad Request"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0migrations/points "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://qdrant-production-3e2f.up.railway.app/collections/mem0_peptide_coaching/points/query "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[32mINFO    [0m httpx:_client.py:1025 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

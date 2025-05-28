@@ -1,3 +1,21 @@
+# Core dependencies
+streamlit
+gradio
+openai
+mem0ai
+qdrant-client
+python-dotenv
+
+# Data validation
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+phonenumbers
+
+# Development dependencies
+pytest
+allure-pytest
+pytest-asyncio
+
 annotated-types
 anyio
 certifi
@@ -9,13 +27,8 @@ httpcore
 httpx
 idna
 jiter
-openai
 pillow
-pydantic
 pydantic-core
-pydantic-settings==2.1.0
-python-dotenv
-pytest-asyncio
 requests
 sniffio
 tqdm
@@ -23,11 +36,6 @@ typing-extensions
 typing-inspection
 urllib3
 websockets
-allure-pytest
-
-# Memory and Vector Database
-mem0ai
-qdrant-client
 
 # Supabase dependencies
 supabase
@@ -36,4 +44,4 @@ vecs
 
 # FastAPI
 fastapi
-uvicorn[standard] 
+uvicorn[standard]

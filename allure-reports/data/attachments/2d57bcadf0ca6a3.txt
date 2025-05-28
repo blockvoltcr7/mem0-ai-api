@@ -1,0 +1,4 @@
+Failed to initialize peptide coach: 1 validation error for MemoryConfig
+vector_store
+  Value error, Extra fields not allowed: timeout, prefer_grpc. Please input only the following fields: client, on_disk, host, url, path, embedding_model_dims, api_key, port, collection_name [type=value_error, input_value={'collection_name': 'mem0..., 'path': '/tmp/qdrant'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
