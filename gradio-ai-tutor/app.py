@@ -179,13 +179,16 @@ def create_user_session(username: str, phone: str) -> Tuple[str, str]:
         logger.error(f"Error creating user session: {str(e)}")
         return "", "❌ An error occurred. Please try again."
 
-def chat_with_tutor(message: str, history: List[List[str]], user_id: str) -> Tuple[str, List[List[str]]]:
-    """Handle chat interaction with the AI tutor."""
+def chat_with_tutor(message: str, history: List[dict], user_id: str):
+    """Handle chat interaction with the AI tutor with streaming responses."""
     if not user_id:
-        return "", history + [["Please log in first by entering your username and phone number above.", ""]]
+        new_history = history + [{"role": "user", "content": "Please log in first by entering your username and phone number above."}]
+        yield "", new_history
+        return
     
     if not message.strip():
-        return "", history
+        yield "", history
+        return
     
     try:
         # Get user context from memory
@@ -205,22 +208,41 @@ def chat_with_tutor(message: str, history: List[List[str]], user_id: str) -> Tup
             logger.error(f"Error retrieving memories: {str(e)}")
             context = ""
         
-        # Generate AI response
+        # Prepare messages for OpenAI
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT + context},
             {"role": "user", "content": message}
         ]
         
-        response = openai_client.chat.completions.create(
+        # Initialize response accumulator
+        assistant_response = ""
+        
+        # Add user message to history immediately
+        new_history = history + [{"role": "user", "content": message}]
+        yield "", new_history
+        
+        # Add empty assistant message that we'll stream into
+        new_history = new_history + [{"role": "assistant", "content": ""}]
+        
+        # Stream the response from OpenAI
+        stream = openai_client.chat.completions.create(
             model="gpt-4o-mini",
             messages=messages,
             temperature=0.7,
-            max_tokens=1000
+            max_tokens=1000,
+            stream=True
         )
         
-        assistant_response = response.choices[0].message.content
+        # Process streaming response
+        for chunk in stream:
+            if chunk.choices[0].delta.content is not None:
+                chunk_content = chunk.choices[0].delta.content
+                assistant_response += chunk_content
+                # Update the last message in history with the accumulated response
+                new_history[-1]["content"] = assistant_response
+                yield "", new_history
         
-        # Store conversation in memory
+        # Store conversation in memory after streaming completes
         try:
             conversation_messages = [
                 {"role": "user", "content": message},
@@ -230,15 +252,17 @@ def chat_with_tutor(message: str, history: List[List[str]], user_id: str) -> Tup
         except Exception as e:
             logger.error(f"Error storing conversation: {str(e)}")
         
-        # Update chat history
-        new_history = history + [[message, assistant_response]]
-        
-        return "", new_history
+        # Final yield with complete response
+        yield "", new_history
         
     except Exception as e:
         logger.error(f"Error in chat: {str(e)}")
         error_response = f"I apologize, but I encountered an error: {str(e)}. Please try again."
-        return "", history + [[message, error_response]]
+        error_history = history + [
+            {"role": "user", "content": message},
+            {"role": "assistant", "content": error_response}
+        ]
+        yield "", error_history
 
 def clear_chat(user_id: str) -> Tuple[List, str]:
     """Clear chat history."""
@@ -291,6 +315,7 @@ def create_interface():
         - 🏥 **Healthcare Focused**: Specialized in health domain prompt engineering
         - 🔒 **User Isolation**: Your conversations are kept separate and private
         - 📚 **Progressive Learning**: Builds on your previous conversations
+        - ⚡ **Real-time Streaming**: Get immediate response as the AI generates answers
         """)
         
         if not services_initialized:
@@ -327,7 +352,8 @@ def create_interface():
         
         chatbot = gr.Chatbot(
             height=400,
-            placeholder="Your conversation will appear here after logging in..."
+            placeholder="Your conversation will appear here after logging in...",
+            type="messages"
         )
         
         with gr.Row():
@@ -350,12 +376,9 @@ def create_interface():
         def handle_login(username, phone):
             user_id, status = create_user_session(username, phone)
             if user_id:
-                return status, user_id, [[status, ""]]
+                return status, user_id, [{"role": "assistant", "content": status}]
             else:
                 return status, "", []
-        
-        def handle_send(message, history, user_id):
-            return chat_with_tutor(message, history, user_id)
         
         def handle_clear(user_id):
             return clear_chat(user_id)
@@ -372,13 +395,13 @@ def create_interface():
         )
         
         send_btn.click(
-            handle_send,
+            chat_with_tutor,
             inputs=[msg_input, chatbot, user_id_state],
             outputs=[msg_input, chatbot]
         )
         
         msg_input.submit(
-            handle_send,
+            chat_with_tutor,
             inputs=[msg_input, chatbot, user_id_state],
             outputs=[msg_input, chatbot]
         )
@@ -403,6 +426,8 @@ def create_interface():
         **🔧 Tech Stack:** Gradio + OpenAI + Mem0 + Qdrant
         """)
     
+    # Enable queue for streaming support
+    app.queue()
     return app
 
 if __name__ == "__main__":
