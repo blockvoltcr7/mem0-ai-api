@@ -2,9 +2,13 @@
 streamlit
 gradio
 openai
-mem0ai
+mem0ai[graph]
 qdrant-client
 python-dotenv
+
+# Graph database dependencies (for Mem0 hybrid configuration)
+neo4j
+# memgraph  # Alternative graph store option (commented out - optional)
 
 # Data validation
 pydantic>=2.0.0
