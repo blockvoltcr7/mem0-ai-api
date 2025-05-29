@@ -21,8 +21,8 @@ from mem0 import Memory
 from qdrant_client import QdrantClient
 from pydantic import BaseModel, Field, ValidationError
 
-# Load environment variables
-load_dotenv()
+# Load environment variables from parent directory
+load_dotenv(Path(__file__).parent.parent / ".env")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -87,6 +87,10 @@ def initialize_services():
             prefer_grpc=False
         )
         
+        # Generate unique collection name with timestamp
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        collection_name = f"health_coach_memories_{timestamp}"
+        
         # Configure Mem0
         mem0_config = {
             "llm": {
@@ -100,7 +104,7 @@ def initialize_services():
             "vector_store": {
                 "provider": "qdrant",
                 "config": {
-                    "collection_name": "health_coach_memories",
+                    "collection_name": collection_name,
                     "client": qdrant_client,
                     "embedding_model_dims": 1536,
                     "on_disk": False
@@ -109,7 +113,7 @@ def initialize_services():
         }
         
         memory_service = Memory.from_config(mem0_config)
-        logger.info("Services initialized successfully")
+        logger.info(f"Services initialized successfully with collection: {collection_name}")
         return True
         
     except Exception as e:
@@ -227,8 +231,8 @@ def create_user_session(selected_user: str) -> Tuple[str, str, str, str]:
     
     return user_id, user_name, user_email, status_msg
 
-def generate_ai_response(user_id: str, user_message: str, health_profile: UserHealth) -> str:
-    """Generate AI response using Mem0 memory context and health profile."""
+def generate_ai_response_stream(user_id: str, user_message: str, health_profile: UserHealth):
+    """Generate streaming AI response using Mem0 memory context and health profile."""
     try:
         # Search for relevant memories
         relevant_memories = memory_service.search(
@@ -281,50 +285,69 @@ def generate_ai_response(user_id: str, user_message: str, health_profile: UserHe
             {"role": "user", "content": user_message}
         ]
         
-        # Generate response
-        response = openai_client.chat.completions.create(
+        # Initialize response accumulator
+        assistant_response = ""
+        
+        # Stream the response from OpenAI
+        stream = openai_client.chat.completions.create(
             model="gpt-4o-mini",
             messages=messages,
             temperature=0.7,
-            max_tokens=1000
+            max_tokens=1000,
+            stream=True
         )
         
-        assistant_response = response.choices[0].message.content
+        # Process streaming response
+        for chunk in stream:
+            if chunk.choices[0].delta.content is not None:
+                chunk_content = chunk.choices[0].delta.content
+                assistant_response += chunk_content
+                yield chunk_content, assistant_response
         
-        # Store conversation in memory
-        conversation_messages = messages + [{"role": "assistant", "content": assistant_response}]
-        memory_service.add(conversation_messages, user_id=user_id)
-        
-        return assistant_response
+        # Store conversation in memory after streaming completes
+        try:
+            conversation_messages = messages + [{"role": "assistant", "content": assistant_response}]
+            memory_service.add(conversation_messages, user_id=user_id)
+        except Exception as e:
+            logger.error(f"Error storing conversation: {str(e)}")
         
     except Exception as e:
         logger.error(f"Error generating AI response: {str(e)}")
-        return f"I apologize, but I encountered an error while processing your request: {str(e)}"
+        error_msg = f"I apologize, but I encountered an error while processing your request: {str(e)}"
+        yield error_msg, error_msg
 
-def chat_with_coach(message: str, history: List[Dict], user_id: str) -> Tuple[str, List[Dict]]:
-    """Handle chat interaction with the AI health coach."""
+def chat_with_coach(message: str, history: List[Dict], user_id: str):
+    """Handle chat interaction with the AI health coach with streaming responses."""
     if not user_id:
         error_message = {"role": "assistant", "content": "Please select a user first to start chatting."}
-        return "", history + [error_message]
+        yield "", history + [error_message]
+        return
     
     if not message.strip():
-        return "", history
+        yield "", history
+        return
     
     # Get user health profile
     health_profile = get_user_profile(user_id)
     
-    # Allow chat regardless of profile completion status
-    # The AI will handle whether to provide general or personalized advice
-    ai_response = generate_ai_response(user_id, message, health_profile)
+    # Add user message to history immediately
+    new_history = history + [{"role": "user", "content": message}]
+    yield "", new_history
     
-    # Create new messages in the correct format
-    user_message = {"role": "user", "content": message}
-    assistant_message = {"role": "assistant", "content": ai_response}
+    # Add empty assistant message that we'll stream into
+    new_history = new_history + [{"role": "assistant", "content": ""}]
     
-    # Update chat history
-    new_history = history + [user_message, assistant_message]
-    
-    return "", new_history
+    # Stream the AI response
+    try:
+        for chunk_content, full_response in generate_ai_response_stream(user_id, message, health_profile):
+            # Update the last message in history with the accumulated response
+            new_history[-1]["content"] = full_response
+            yield "", new_history
+    except Exception as e:
+        logger.error(f"Error in chat streaming: {str(e)}")
+        error_response = f"I apologize, but I encountered an error: {str(e)}. Please try again."
+        new_history[-1]["content"] = error_response
+        yield "", new_history
 
 def clear_chat_history(user_id: str) -> Tuple[List, str]:
     """Clear chat history."""
@@ -472,6 +495,8 @@ def create_interface():
         - 🧬 **Peptide Therapy Focus**: Specialized knowledge in peptide therapy and safety
         - 👥 **Demo Users**: Choose from John, Jane, or Jarvis for testing
         - 📋 **Health Profile Management**: Comprehensive onboarding and profile tracking
+        - ⚡ **Real-time Streaming**: Get immediate response as the AI generates answers
+        - 🔄 **Fresh Sessions**: Each app restart creates a new memory collection for clean testing
         """)
         
         if not services_initialized:
@@ -656,9 +681,6 @@ def create_interface():
         def handle_refresh_profile(user_id):
             return get_health_profile_summary(user_id)
         
-        def handle_send(message, history, user_id):
-            return chat_with_coach(message, history, user_id)
-        
         def handle_clear(user_id):
             return clear_chat_history(user_id)
         
@@ -696,13 +718,13 @@ def create_interface():
         )
         
         send_btn.click(
-            handle_send,
+            chat_with_coach,
             inputs=[msg_input, chatbot, current_user],
             outputs=[msg_input, chatbot]
         )
         
         msg_input.submit(
-            handle_send,
+            chat_with_coach,
             inputs=[msg_input, chatbot, current_user],
             outputs=[msg_input, chatbot]
         )
@@ -721,6 +743,8 @@ def create_interface():
         **⚠️ Disclaimer:** For educational purposes only. Consult healthcare professionals for medical advice.
         """)
     
+    # Enable queue for streaming support
+    app.queue()
     return app
 
 if __name__ == "__main__":
