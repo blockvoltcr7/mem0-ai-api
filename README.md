@@ -2,6 +2,8 @@
 
 A collection of advanced AI applications demonstrating **persistent memory capabilities** using **OpenAI GPT models**, **Mem0** memory framework, and **Qdrant** vector database. These applications showcase how to build intelligent, memory-powered AI systems that remember user interactions across sessions.
 
+[![Youtube Tutorial Demo](https://img.youtube.com/vi/ElnD4vOUQ8E/0.jpg)](https://www.youtube.com/watch?v=ElnD4vOUQ8E&t=177s)
+
 ## 🚀 Featured Applications
 
 ### 🧬 Health Coach AI - Peptide Therapy Assistant
