@@ -1,0 +1,43 @@
+[project]
+name = "mem0-ai-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "streamlit",
+    "gradio",
+    "openai",
+    "mem0ai[graph]",
+    "qdrant-client",
+    "python-dotenv",
+    "neo4j",
+    # "memgraph",  # Optional, commented out in requirements.in
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "phonenumbers",
+    "pytest",
+    "allure-pytest",
+    "pytest-asyncio",
+    "annotated-types",
+    "anyio",
+    "certifi",
+    "charset-normalizer",
+    "distro",
+    "elevenlabs",
+    "h11",
+    "httpcore",
+    "httpx",
+    "idna",
+    "jiter",
+    "pillow",
+    "pydantic-core",
+    "requests",
+    "sniffio",
+    "tqdm",
+    "typing-extensions",
+    "typing-inspection"
+]
+
+[tool.uv]
+# uv best practices: use pyproject.toml as the single source of truth for dependencies
